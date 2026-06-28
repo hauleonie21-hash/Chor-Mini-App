@@ -12,8 +12,10 @@ const resetBtn = document.getElementById("reset");
 const masterVolume = document.getElementById("masterVolume");
 const masterValue = document.getElementById("masterValue");
 const tempo = document.getElementById("tempo");
-const tempoValue = document.getElementById("tempoValue");
-
+const rewindBtn = document.getElementById("rewind");
+const forwardBtn = document.getElementById("forward");
+const progress = document.getElementById("progress");
+const timeDisplay = document.getElementById("timeDisplay");
 let tracks = [];
 let isPlaying = false;
 
