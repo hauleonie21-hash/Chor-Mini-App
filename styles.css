@@ -1,5 +1,35 @@
 * { box-sizing: border-box; }
 body {
+  body{
+    background:var(--background);
+}
+
+.track{
+    border:2px solid #f3bfd8;
+    background:white;
+}
+
+button.primary{
+    background:var(--primary);
+    color:white;
+}
+
+button.primary:hover{
+    background:var(--primary-dark);
+}
+
+button.active{
+    background:#f48fb1;
+    color:white;
+}
+
+h1{
+    color:#c84f92;
+}
+
+h2{
+    color:#c84f92;
+}
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background: #f5f3ee;
@@ -58,4 +88,10 @@ input[type="range"] { width: 100%; min-width: 180px; }
   .track { grid-template-columns: 1fr; }
   button { width: 100%; }
   h1 { font-size: 1.55rem; }
+  :root{
+    --primary:#d96aa7;
+    --primary-dark:#bf4f8e;
+    --background:#fff7fb;
+    --card:#ffffff;
+}
 }
