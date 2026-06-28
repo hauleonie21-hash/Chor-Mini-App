@@ -5,8 +5,7 @@
 :root {
   --primary: #d96aa7;
   --primary-dark: #bf4f8e;
-  --background: #fff7fb;
-}
+--background: #ffe6f2;}
 
 body {
   margin: 0;
@@ -141,8 +140,8 @@ input[type="range"] {
 }
 
 .sheet-image {
-  width: 25%;
-  max-width: 220px;
+  width: 18%;
+  max-width: 160px;
   height: auto;
   border-radius: 12px;
 }
@@ -173,8 +172,7 @@ input[type="range"] {
     font-size: 1.55rem;
   }
 
-  .sheet-image {
-  width: 70%;
-  max-width: 260px;
-}
+.sheet-image {
+  width: 55%;
+  max-width: 220px;
 }
