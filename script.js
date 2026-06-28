@@ -1,10 +1,10 @@
 const tracksConfig = [
+  { name: "Klavier", file: "audio/klavier.mp3", defaultVolume: 80 },
   { name: "Sopran", file: "audio/sopran.mp3", defaultVolume: 80 },
   { name: "Alt", file: "audio/alt.mp3", defaultVolume: 80 },
   { name: "Tenor", file: "audio/tenor.mp3", defaultVolume: 80 },
   { name: "Bass", file: "audio/bass.mp3", defaultVolume: 80 }
 ];
-
 const tracksEl = document.getElementById("tracks");
 const playPauseBtn = document.getElementById("playPause");
 const stopBtn = document.getElementById("stop");
