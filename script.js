@@ -115,7 +115,7 @@ function resetAll() {
     t.mute.classList.remove("active");
   });
   updateVolumes();
-}
+} 
 
 playPauseBtn.addEventListener("click", () => isPlaying ? pauseAll() : playAll());
 stopBtn.addEventListener("click", stopAll);
