@@ -1,0 +1,61 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f3ee;
+  color: #222;
+}
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+header {
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+  margin-bottom: 18px;
+}
+h1 { margin: 0 0 10px; font-size: 2rem; }
+.intro { font-size: 1.15rem; margin: 0; line-height: 1.5; }
+.controls, .bottom-controls { display: flex; gap: 12px; flex-wrap: wrap; }
+.main-controls { margin-bottom: 18px; }
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  background: #e0ded8;
+  color: #111;
+}
+button.primary { background: #2f5f4f; color: white; }
+button.active { outline: 4px solid #2f5f4f; background: #d9eadf; }
+.tracks { display: grid; gap: 14px; }
+.track, .control-card, .help {
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+.track {
+  display: grid;
+  grid-template-columns: 150px 1fr auto auto;
+  gap: 14px;
+  align-items: center;
+}
+.track h2 { margin: 0; font-size: 1.35rem; }
+.volume-wrap { display: flex; gap: 10px; align-items: center; }
+input[type="range"] { width: 100%; min-width: 180px; }
+.bottom-controls { margin-top: 18px; }
+.control-card { flex: 1 1 300px; }
+.control-card label { display: block; margin-bottom: 10px; font-size: 1.05rem; }
+.help { margin-top: 18px; line-height: 1.5; }
+.help h2 { margin-top: 0; }
+@media (max-width: 700px) {
+  .app { padding: 14px; }
+  .track { grid-template-columns: 1fr; }
+  button { width: 100%; }
+  h1 { font-size: 1.55rem; }
+}

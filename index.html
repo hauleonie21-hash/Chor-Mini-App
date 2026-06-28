@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chor-Übe-App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>The Lord Bless You and Keep You</h1>
+      <p class="intro">Wähle deine Stimme aus, stelle die anderen Stimmen leiser und übe bequem mit.</p>
+    </header>
+
+    <section class="controls main-controls" aria-label="Hauptsteuerung">
+      <button id="playPause" class="primary">▶ Abspielen</button>
+      <button id="stop">■ Stopp</button>
+      <button id="reset">Reset</button>
+    </section>
+
+    <section id="tracks" class="tracks" aria-label="Stimmen"></section>
+
+    <section class="bottom-controls">
+      <div class="control-card">
+        <label for="masterVolume"><strong>Master</strong> Gesamtlautstärke</label>
+        <input id="masterVolume" type="range" min="0" max="100" value="80" />
+        <span id="masterValue">80%</span>
+      </div>
+
+      <div class="control-card">
+        <label for="tempo"><strong>Tempo</strong> langsamer oder schneller</label>
+        <input id="tempo" type="range" min="50" max="120" value="100" />
+        <span id="tempoValue">100%</span>
+      </div>
+    </section>
+
+    <section class="help">
+      <h2>Kurze Hilfe</h2>
+      <p><strong>S</strong> bedeutet Solo: Nur diese Stimme ist hörbar.</p>
+      <p><strong>M</strong> bedeutet Mute: Diese Stimme wird stummgeschaltet.</p>
+      <p>Mit <strong>Reset</strong> wird alles wieder auf Anfang gestellt.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
