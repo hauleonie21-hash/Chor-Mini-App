@@ -140,8 +140,8 @@ input[type="range"] {
 }
 
 .sheet-image {
-  width: 60%;
-  max-width: 500px;
+  width: 100%;
+  max-width: 850px;
   height: auto;
   border-radius: 12px;
 }
