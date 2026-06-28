@@ -23,7 +23,15 @@ let isPlaying = false;
 function createTracks() {
   tracksConfig.forEach((config, index) => {
     const audio = new Audio(config.file);
-    audio.preload = "auto";
+    audio.preload = "auto";audio.addEventListener("ended", () => {
+  isPlaying = false;
+  playPauseBtn.textContent = "▶ Abspielen";
+  tracks.forEach(t => {
+    t.audio.pause();
+    t.audio.currentTime = 0;
+  });
+  progress.value = 0;
+});
 
     const card = document.createElement("article");
     card.className = "track";
