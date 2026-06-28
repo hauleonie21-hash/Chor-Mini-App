@@ -125,4 +125,52 @@ resetBtn.addEventListener("click", resetAll);
 masterVolume.addEventListener("input", updateVolumes);
 tempo.addEventListener("input", updateVolumes);
 
-createTracks();
+function formatTime(seconds) {
+  if (!seconds || isNaN(seconds)) return "0:00";
+  const min = Math.floor(seconds / 60);
+  const sec = Math.floor(seconds % 60).toString().padStart(2, "0");
+  return `${min}:${sec}`;
+}
+
+function updateProgress() {
+  if (!tracks.length) return;
+
+  const firstAudio = tracks[0].audio;
+  const current = firstAudio.currentTime;
+  const duration = firstAudio.duration || 0;
+
+  if (duration > 0) {
+    progress.value = (current / duration) * 100;
+    timeDisplay.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
+  }
+
+  if (isPlaying) {
+    requestAnimationFrame(updateProgress);
+  }
+}
+
+progress.addEventListener("input", () => {
+  if (!tracks.length) return;
+
+  const firstAudio = tracks[0].audio;
+  const duration = firstAudio.duration || 0;
+  const newTime = (Number(progress.value) / 100) * duration;
+
+  tracks.forEach(t => {
+    t.audio.currentTime = newTime;
+  });
+});
+
+rewindBtn.addEventListener("click", () => {
+  tracks.forEach(t => {
+    t.audio.currentTime = Math.max(0, t.audio.currentTime - 10);
+  });
+});
+
+forwardBtn.addEventListener("click", () => {
+  tracks.forEach(t => {
+    t.audio.currentTime = Math.min(t.audio.duration || 0, t.audio.currentTime + 10);
+  });
+});
+
+tracksEl.addEventListener("loadedmetadata", updateProgress, true);
