@@ -12,6 +12,7 @@ const resetBtn = document.getElementById("reset");
 const masterVolume = document.getElementById("masterVolume");
 const masterValue = document.getElementById("masterValue");
 const tempo = document.getElementById("tempo");
+const tempoValue = document.getElementById("tempoValue");
 const rewindBtn = document.getElementById("rewind");
 const forwardBtn = document.getElementById("forward");
 const progress = document.getElementById("progress");
@@ -87,7 +88,8 @@ async function playAll() {
   try {
     await Promise.all(tracks.map(t => t.audio.play()));
     isPlaying = true;
-    playPauseBtn.textContent = "⏸ Pause";
+playPauseBtn.textContent = "⏸ Pause";
+updateProgress();
   } catch (error) {
     alert("Die Audiodateien konnten nicht abgespielt werden. Bitte prüfe, ob sie im Ordner 'audio' liegen und richtig benannt sind.");
   }
@@ -174,3 +176,5 @@ forwardBtn.addEventListener("click", () => {
 });
 
 tracksEl.addEventListener("loadedmetadata", updateProgress, true);
+
+createTracks();
