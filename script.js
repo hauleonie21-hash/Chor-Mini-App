@@ -16,6 +16,7 @@ const tempoValue = document.getElementById("tempoValue");
 const rewindBtn = document.getElementById("rewind");
 const forwardBtn = document.getElementById("forward");
 const progress = document.getElementById("progress");
+const timeDisplay = document.getElementById("timeDisplay");
 const sheetImage = document.getElementById("sheetImage");let tracks = [];
 let isPlaying = false;
 
@@ -75,12 +76,25 @@ function createTracks() {
 function updateVolumes() {
   const master = Number(masterVolume.value) / 100;
   const hasSolo = tracks.some(t => t.isSolo);
+
   tracks.forEach(t => {
-    const ownVolume = Number(t.volume.value) / 100;
+    let ownVolume = Number(t.volume.value) / 100;
+
+    if (t.config.name === "Tenor" || t.config.name === "Bass") {
+      ownVolume *= 1.5;
+    }
+
+    ownVolume = Math.min(ownVolume, 1);
+
     const audibleBySolo = !hasSolo || t.isSolo;
-    t.audio.volume = t.isMuted || !audibleBySolo ? 0 : ownVolume * master;
+
+    t.audio.volume = t.isMuted || !audibleBySolo
+      ? 0
+      : ownVolume * master;
+
     t.audio.playbackRate = Number(tempo.value) / 100;
   });
+
   masterValue.textContent = `${masterVolume.value}%`;
   tempoValue.textContent = `${tempo.value}%`;
 }
@@ -147,7 +161,12 @@ function updateSheetMusic(currentTime) {
     sheetImage.src = "noten/noten-seite-4.jpg";
   }
 }
-
+function formatTime(seconds) {
+  if (!seconds || isNaN(seconds)) return "0:00";
+  const min = Math.floor(seconds / 60);
+  const sec = Math.floor(seconds % 60).toString().padStart(2, "0");
+  return `${min}:${sec}`;
+}
 function updateProgress() {
   if (!tracks.length) return;
 
