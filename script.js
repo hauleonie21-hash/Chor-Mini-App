@@ -16,8 +16,7 @@ const tempoValue = document.getElementById("tempoValue");
 const rewindBtn = document.getElementById("rewind");
 const forwardBtn = document.getElementById("forward");
 const progress = document.getElementById("progress");
-const timeDisplay = document.getElementById("timeDisplay");
-let tracks = [];
+const sheetImage = document.getElementById("sheetImage");let tracks = [];
 let isPlaying = false;
 
 function createTracks() {
@@ -135,11 +134,18 @@ resetBtn.addEventListener("click", resetAll);
 masterVolume.addEventListener("input", updateVolumes);
 tempo.addEventListener("input", updateVolumes);
 
-function formatTime(seconds) {
-  if (!seconds || isNaN(seconds)) return "0:00";
-  const min = Math.floor(seconds / 60);
-  const sec = Math.floor(seconds % 60).toString().padStart(2, "0");
-  return `${min}:${sec}`;
+function updateSheetMusic(currentTime) {
+  if (!sheetImage) return;
+
+  if (currentTime < 21) {
+    sheetImage.src = "noten/noten-seite-1.jpg";
+  } else if (currentTime < 69) {
+    sheetImage.src = "noten/noten-seite-2.jpg";
+  } else if (currentTime < 114) {
+    sheetImage.src = "noten/noten-seite-3.jpg";
+  } else {
+    sheetImage.src = "noten/noten-seite-4.jpg";
+  }
 }
 
 function updateProgress() {
@@ -147,6 +153,7 @@ function updateProgress() {
 
   const firstAudio = tracks[0].audio;
   const current = firstAudio.currentTime;
+  updateSheetMusic(current);
   const duration = firstAudio.duration || 0;
 
   if (duration > 0) {
